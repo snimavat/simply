@@ -1,0 +1,2 @@
+
+CLASSPATH=/root/grails/conf

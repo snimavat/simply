@@ -1,0 +1,4 @@
+rootProject.name='simply'
+
+include ':crudify'
+project(':crudify').projectDir = new File(settingsDir, '../crudify')

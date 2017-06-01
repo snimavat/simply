@@ -1,0 +1,3 @@
+2017-06-01 14:58:47 jdbc[7]: exception
+org.h2.jdbc.JdbcSQLException: Table "ROLE" not found; SQL statement:
+select this_.id as id1_6_0_, this_.version as version2_6_0_, this_.authority as authorit3_6_0_ from role this_ where this_.authority=? [42102-193]
