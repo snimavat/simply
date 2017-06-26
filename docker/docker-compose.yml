@@ -19,7 +19,7 @@ services:
     environment:
      - APP_ENV=production
     volumes:
-      #- ./conf/prod:/root/crunchprep/conf
+      - ./conf/prod:/root/grails/conf
       - ./conf/bin/setenv.sh:/usr/local/tomcat/bin/setenv.sh
       - ./webapps:/usr/local/tomcat/webapps
       - ./logs:/usr/local/tomcat/logs

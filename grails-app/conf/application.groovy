@@ -38,6 +38,8 @@ grails.plugin.springsecurity.filterChain.chainMap = [
 
 grails.plugin.fields.disableLookupCache = true
 
+grails.config.locations = ["classpath:prod-config.groovy",]
+
 environments {
 	production {
 		grails.plugin.fields.disableLookupCache = false
