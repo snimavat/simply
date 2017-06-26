@@ -16,3 +16,4 @@ build/
 /docker/logs/*
 /docker/webapps/*
 /docker/conf/nginx/logs/*
+/docker/static/*

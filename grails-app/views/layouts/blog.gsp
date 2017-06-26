@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<title><g:layoutTitle/></title>
+
+	<asset:link rel="shortcut icon" href="lapsi/favicon.ico" type="image/x-icon"/>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+
+	<link href="https://fonts.googleapis.com/css?family=Open+Sans:400,700|Source+Sans+Pro:400,700" rel="stylesheet">
+
+	<asset:stylesheet src="blog.css"/>
+	<g:layoutHead/>
+	<style>
+	.top-bar {
+		padding:5px 0 0 0;
+	}
+
+	.top-bar ul {
+		padding-left: 0;
+		list-style: none;
+		color: #fff;
+	}
+
+	.top-bar ul li {
+		display: inline-block;
+		padding-right:20px;
+	}
+
+
+	.top-bar a {
+		color: #333333;
+		font-weight: bold;
+	}
+
+	.top-bar a:hover {
+		color: #222222;
+	}
+	</style>
+</head>
+<body data-context="${request.contextPath}">
+<div class="top-bar">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-12 text-right">
+				<ul class="">
+					<li><a href="/" title="nimavat.me">Home</a></li>
+					<li><a href="/blog" title="Blog">Blog</a></li>
+				</ul>
+			</div>
+		</div>
+	</div>
+</div>
+<div class="container main-content">
+	<!--
+	<div class="blog-header">
+		<h1 class="blog-title">The Grails Playground</h1>
+		<p class="lead blog-description">The official example template of creating a blog with Bootstrap.</p>
+	</div>
+	-->
+	<div class="row" style="margin-top: 30px;">
+
+		<div class="col-sm-12 blog-main">
+			<g:layoutBody/>
+		</div>
+	</div>
+</div>
+
+
+</body>
+</html>

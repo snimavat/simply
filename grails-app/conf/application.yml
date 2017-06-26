@@ -2,7 +2,7 @@
 grails:
     profile: web
     codegen:
-        defaultPackage: demo328
+        defaultPackage: org.simply
     spring:
         transactionManagement:
             proxies: false

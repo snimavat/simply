@@ -1,0 +1,24 @@
+.block-action {
+    position: relative;
+    top: -22px;
+    left: -5px;
+    font-size: 20px;
+    visibility: hidden;
+}
+
+.block-wrapper {
+    background: #ffffff;
+}
+
+.block-wrapper:hover {
+    background: #eeeeee;
+    cursor: pointer;
+
+    -webkit-box-shadow: -10px 0px 0px 0px rgba(105, 160, 254, 0.9);
+    -moz-box-shadow:    -10px 0px 0px 0px rgba(105, 160, 254, 0.9);
+    box-shadow:         -10px 0px 0px 0px rgba(105, 160, 254, 0.9);
+}
+
+.block-wrapper:hover a.block-action {
+    visibility: visible;
+}

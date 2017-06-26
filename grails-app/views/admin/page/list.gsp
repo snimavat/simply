@@ -7,17 +7,15 @@
 </head>
 
 <body>
-<div class="panel panel-default">
-	<div class="panel-heading">
-		Pages
-		<p class="pull-right">
-			<g:link action="create" class="btn btn-primary btn-xs">Create new</g:link>
-		</p>
-	</div>
-	<div class="panel-body">
+		<div class="subhead">
+			<div class="subhead-heading">Pages</div>
+			<div class="subhead-actions">
+				<g:link action="addSubpage" class="btn btn-primary btn-xs" id="${params.id}">Create child page</g:link>
+			</div>
+		</div>
+
 		<g:render template="list"/>
-	</div>
-</div>
+
 </body>
 </html>
 

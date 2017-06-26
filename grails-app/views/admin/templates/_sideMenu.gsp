@@ -16,7 +16,7 @@
 				</li>
 
 				<li class="${controllerName == 'flexiPage' ? 'active' : ''}">
-					<g:link controller="flexiPage" action="list" namespace="admin">Pages</g:link>
+					<g:link controller="page" action="list" namespace="admin">Pages</g:link>
 				</li>
 
 				<%--

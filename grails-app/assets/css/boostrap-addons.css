@@ -1,0 +1,11 @@
+.clickable{
+    cursor: pointer;
+}
+
+.panel-heading span {
+    font-size: 15px;
+}
+
+.dropdown-menu.large {
+    width: 300px !important;
+}

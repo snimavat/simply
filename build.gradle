@@ -7,6 +7,7 @@ buildscript {
         classpath "org.grails:grails-gradle-plugin:$grailsVersion"
         classpath "com.bertramlabs.plugins:asset-pipeline-gradle:2.14.2"
         classpath "org.grails.plugins:hibernate5:${gormVersion-".RELEASE"}"
+        classpath 'com.bertramlabs.plugins:coffee-asset-pipeline:2.14.2'
     }
 }
 
@@ -53,7 +54,8 @@ dependencies {
 
     //runtime "com.bertramlabs.plugins:asset-pipeline-grails:2.14.1"
     //compile 'org.grails.plugins:asset-pipeline:3.2.1'
-    compile 'com.bertramlabs.plugins:asset-pipeline-grails:2.14.2'
+    runtime 'com.bertramlabs.plugins:asset-pipeline-grails:2.14.2'
+    assets 'com.bertramlabs.plugins:coffee-asset-pipeline:2.14.2'
 
     runtime "com.h2database:h2"
 
@@ -65,6 +67,13 @@ dependencies {
     //testCompile "org.grails.plugins:geb"
    // testRuntime "org.seleniumhq.selenium:selenium-htmlunit-driver:2.47.1"
     //testRuntime "net.sourceforge.htmlunit:htmlunit:2.18"
+
+    compile "com.fasterxml.jackson.core:jackson-annotations:2.8.8"
+    compile "com.fasterxml.jackson.core:jackson-core:2.8.8"
+    compile "com.fasterxml.jackson.core:jackson-databind:2.8.8"
+
+    compile 'org.grails.plugins:database-migration:3.0.1'
+
 }
 
 bootRun {
@@ -74,6 +83,7 @@ bootRun {
 
 
 assets {
-    minifyJs = true
-    minifyCss = true
+    minifyJs = false
+    minifyCss = false
+    enableGzip = false
 }

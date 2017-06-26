@@ -1,17 +1,8 @@
-import com.lapsi.cms.pages.BlogPage
-import com.lapsi.cms.pages.FlexiPage
-import com.lapsi.cms.pages.HomePage
-
-simply {
-	cms {
-		pageClasses = [FlexiPage, HomePage]
-	}
-}
 
 // Added by the Spring Security Core plugin:
-grails.plugin.springsecurity.userLookup.userDomainClassName = 'com.lapsi.User'
-grails.plugin.springsecurity.userLookup.authorityJoinClassName = 'com.lapsi.UserRole'
-grails.plugin.springsecurity.authority.className = 'com.lapsi.Role'
+grails.plugin.springsecurity.userLookup.userDomainClassName = 'org.simply.User'
+grails.plugin.springsecurity.userLookup.authorityJoinClassName = 'org.simply.UserRole'
+grails.plugin.springsecurity.authority.className = 'org.simply.Role'
 
 grails.plugin.springsecurity.securityConfigType = "InterceptUrlMap"
 
@@ -45,8 +36,17 @@ grails.plugin.springsecurity.filterChain.chainMap = [
 	[pattern: '/**',             filters: 'JOINED_FILTERS']
 ]
 
-grails {
-	assets {
-		storagePath = "/assets"
+grails.plugin.fields.disableLookupCache = true
+
+environments {
+	production {
+		grails.plugin.fields.disableLookupCache = false
+
+		grails {
+			assets {
+				bundle = false
+				storagePath = "/assets"
+			}
+		}
 	}
 }
