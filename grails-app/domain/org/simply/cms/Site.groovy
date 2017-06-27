@@ -24,6 +24,10 @@ class Site {
 		cache true
 	}
 
+	static Site getDEFAUTL() {
+		return Site.findByIsDefault(true)
+	}
+
 	public String getUrl() {
 		return "http://${hostname}/"
 	}

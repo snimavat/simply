@@ -1,21 +1,21 @@
 version: '2'
 services:
 
-#  db:
-#    image: mysql:5.7.10
-#    container_name: crunchprep_mysql
-#    ports:
-#      - "3306:3306"
-#    environment:
-#      - MYSQL_ROOT_PASSWORD=VYzMhxWd2cu3nXVN
-#      - MYSQL_DATABASE=crunchprep_gre
-#    volumes:
-#      - "../../db:/var/lib/mysql"
-#      - "./conf/mysql:/etc/mysql/conf.d"
+  db:
+    image: mysql:5.7.10
+    container_name: simply_mysql
+    ports:
+      - "3306:3306"
+    environment:
+      - MYSQL_ROOT_PASSWORD=root
+      - MYSQL_DATABASE=simply
+    volumes:
+      - "../../db:/var/lib/mysql"
+      - "./conf/mysql:/etc/mysql/conf.d"
 
   web:
     image: tomcat:8.5-alpine
-    container_name: grails_tomcat
+    container_name: simply_tomcat
     environment:
      - APP_ENV=production
     volumes:
@@ -24,8 +24,8 @@ services:
       - ./webapps:/usr/local/tomcat/webapps
       - ./logs:/usr/local/tomcat/logs
       - ./static:/assets
-    #depends_on:
-     #- db
+    depends_on:
+     - db
     ports:
      - "8080:8080"
 

@@ -17,7 +17,7 @@ class CmsInterceptor {
 		log.trace "Request received $host, $request.requestURI, $request.forwardURI"
 
 		if(host) { host = host.trim().toLowerCase()}
-		Site site = Site.findByHostname(host)
+		Site site = Site.findByHostname(host) ?: Site.DEFAUTL
 		if(site) {
 			siteContextHolder.site = site
 			return true

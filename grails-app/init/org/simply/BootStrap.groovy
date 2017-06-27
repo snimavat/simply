@@ -19,7 +19,7 @@ class BootStrap {
             Site.withTransaction {
                 Page root = new Page(title: "ROOT", slug: "/", published: false).save(failOnError:true)
                 Page homePage = new HomePage(title: "nimavat.me", slug: "home", parent: root, published: true).save(failOnError: true)
-                site = new Site(name: "localhost", hostname: "localhost", rootPage: homePage).save(failOnError: true)
+                site = new Site(name: "localhost", hostname: "localhost", rootPage: homePage, isDefault: true).save(failOnError: true)
             }
         }
     }
