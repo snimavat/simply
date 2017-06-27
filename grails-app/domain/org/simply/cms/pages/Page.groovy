@@ -45,6 +45,7 @@ class Page implements LookupType {
 
 	static mapping = {
 		tablePerHierarchy false
+		metaDescription type: "text"
 	}
 
 	static namedQueries = {

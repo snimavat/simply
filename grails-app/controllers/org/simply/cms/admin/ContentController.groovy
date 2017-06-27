@@ -1,17 +1,15 @@
 package org.simply.cms.admin
 
+import groovy.transform.CompileDynamic
+import groovy.transform.CompileStatic
 import org.apache.commons.lang.StringUtils
 import org.simply.cms.PagesService
 import org.simply.cms.Site
 import org.simply.cms.SiteContextHolder
 import org.simply.cms.pages.Page
-import org.springframework.beans.factory.annotation.Autowired
 
 class ContentController {
-	@Autowired
 	PagesService pagesService
-
-	@Autowired
 	SiteContextHolder siteContextHolder
 
 	def serve() {
@@ -19,10 +17,10 @@ class ContentController {
 
 		if(site) {
 			params
-			List components = request.forwardURI.split("/").findAll( { !StringUtils.isEmpty(it)})
+			List components = request.forwardURI.split("/").findAll( { !StringUtils.isEmpty(it)}) as List
 			Page page = site.rootPage.route(components)
 			if(!page) {
-				render status: 404, text: "not found"
+				render status: 404
 			} else {
 				String view = pagesService.findDisplayViewForPage(page, site)
 				if(view) {

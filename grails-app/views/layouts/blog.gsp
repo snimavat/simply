@@ -7,12 +7,13 @@
 	<title><g:layoutTitle/></title>
 
 	<asset:link rel="shortcut icon" href="lapsi/favicon.ico" type="image/x-icon"/>
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-	<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+	<asset:stylesheet src="bootstrap/css/bootstrap.css"/>
+	<asset:stylesheet src="font-awsome/css/font-awesome.min.css"/>
 
 	<link href="https://fonts.googleapis.com/css?family=Open+Sans:400,700|Source+Sans+Pro:400,700" rel="stylesheet">
 
 	<asset:stylesheet src="blog.css"/>
+
 	<g:layoutHead/>
 	<style>
 	.top-bar {
@@ -63,7 +64,7 @@
 	-->
 	<div class="row" style="margin-top: 30px;">
 
-		<div class="col-sm-12 blog-main">
+		<div class="col-sm-12 blog-main" style="padding-left: 1.5em; padding-top: 1.5em">
 			<g:layoutBody/>
 		</div>
 	</div>

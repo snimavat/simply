@@ -23,7 +23,7 @@ class BlogIndexPage extends Page {
 	@Override
 	@CompileStatic(TypeCheckingMode.SKIP)
 	Map getContext(HttpServletRequest request, Map params) {
-		Map context = Object.getContext(request, params)
+		Map context = super.getContext(request, params)
 		int max = params.int("max") ?: 10
 		int offset = params.int("offset") ?: 0
 

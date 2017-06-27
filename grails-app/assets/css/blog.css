@@ -26,7 +26,7 @@ h6, .h6 {
 
 @media (min-width: 1200px) {
   .container {
-    width: 970px;
+    width: 960px;
   }
 }
 
@@ -138,7 +138,7 @@ h6, .h6 {
  */
 
 .blog-post {
-  margin-bottom: 60px;
+  margin-bottom: 2.5em;
 }
 .blog-post-title {
   margin-bottom: 5px;
@@ -171,12 +171,11 @@ body {
   font-size: 16px;
   color: #444;
   line-height: 1.75;
-  background: #eaeaea;
+  background: #fefefe;
 }
 
 .main-content {
   background: #fefefe;
-  border: 1px solid #cccccc;
   min-height: calc(100vh - 6em);
   border-radius: 10px;
 }
@@ -194,41 +193,36 @@ h6 {
 }
 
 h1 {
-  font-size: 2.25em;
+  font-size: 2em;
   font-weight: 700;
   margin-top: 0.53em;
   margin-bottom: 0.53em;
   text-transform: uppercase;
 }
 h2 {
-  font-size: 2em;
+  font-size: 1.75em;
   font-weight: 700;
-  margin-top: 0.4em;
   margin-bottom: 0.4em;
   font-family: 'Open Sans';
 }
 h3 {
-  font-size: 1.75em;
+  font-size: 1.50em;
   font-weight: 700;
-  margin-top: 0.4em;
   margin-bottom: 0.4em;
 }
 h4 {
-  font-size: 1.5em;
+  font-size: 1.25em;
   font-weight: 700;
-  margin-top: 0.67em;
   margin-bottom: 0.67em;
 }
 h5 {
-  font-size: 1.06em;
+  font-size: 1.10em;
   font-weight: 700;
-  margin-top: 0.94em;
   margin-bottom: 0.94em;
 }
 h6 {
   font-size: 1em;
   font-weight: 700;
-  margin-top: 1em;
   margin-bottom: 1em;
 }
 

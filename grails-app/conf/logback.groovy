@@ -35,4 +35,10 @@ if (Environment.isDevelopmentMode() && targetDir != null) {
     }
     logger("StackTrace", ERROR, ['FULL_STACKTRACE'], false)
 }
+
+logger("org.grails.plugins.databasemigration", INFO, ['STDOUT'])
+logger("liquibase", INFO, ['STDOUT'])
+logger("grails.plugins.crudify", INFO, ['STDOUT'])
+logger("org.simply", DEBUG, ['STDOUT'])
+
 root(WARN, ['STDOUT'])

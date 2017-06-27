@@ -46,7 +46,7 @@ class User implements Serializable {
 		password = _springSecurityService?.passwordEncoder ? _springSecurityService.encodePassword(password) : password
 	}
 
-	static transients = ['_springSecurityService']
+	static transients = ['_springSecurityService', 'name', 'authorities']
 
 	static constraints = {
 		password nullable: false, blank: false, password: true
@@ -55,5 +55,9 @@ class User implements Serializable {
 
 	static mapping = {
 		password column: '`password`'
+	}
+
+	String getName() {
+		return username
 	}
 }

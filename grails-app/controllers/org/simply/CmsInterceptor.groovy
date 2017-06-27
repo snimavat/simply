@@ -1,9 +1,10 @@
 package org.simply
 
+import grails.compiler.GrailsCompileStatic
 import org.simply.cms.Site
 import org.simply.cms.SiteContextHolder
 
-
+@GrailsCompileStatic
 class CmsInterceptor {
 	SiteContextHolder siteContextHolder
 

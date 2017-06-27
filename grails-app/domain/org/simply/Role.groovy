@@ -21,7 +21,13 @@ class Role implements Serializable {
 		authority nullable: false, blank: false, unique: true
 	}
 
+	static transients = ['name']
+
 	static mapping = {
 		cache true
+	}
+
+	String getName() {
+		return authority
 	}
 }

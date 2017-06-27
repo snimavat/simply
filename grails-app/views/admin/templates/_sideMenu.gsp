@@ -11,11 +11,19 @@
 		</div>
 		<div class="navbar-collapse collapse sidebar-navbar-collapse">
 			<ul class="nav navbar-nav">
+				<li class="${'user' == params.domainClass ? 'active' : ''}">
+					<admin:link controller="genericAdmin" namespace="admin" domain="user">Users</admin:link>
+				</li>
+
+				<li class="${'role' == params.domainClass ? 'active' : ''}">
+					<admin:link controller="genericAdmin" namespace="admin" domain="role">Roles</admin:link>
+				</li>
+
 				<li class="${'site' == params.domainClass ? 'active' : ''}">
 					<admin:link controller="genericAdmin" namespace="admin" domain="site">Sites</admin:link>
 				</li>
 
-				<li class="${controllerName == 'flexiPage' ? 'active' : ''}">
+				<li class="${controllerName == 'page' ? 'active' : ''}">
 					<g:link controller="page" action="list" namespace="admin">Pages</g:link>
 				</li>
 

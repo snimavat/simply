@@ -23,6 +23,7 @@ grails.plugin.springsecurity.interceptUrlMap = [
 		[pattern: '/logout/**',      access: ['permitAll']],
 		[pattern: '/admin/**',       access: ['ROLE_ADMIN']],
 		[pattern: '/dbconsole/**',   access: ['ROLE_ADMIN']],
+		[pattern: '/console/**',   	 access: ['ROLE_ADMIN']],
 		[pattern: '/**',       		 access: ['permitAll']],
 
 ]
@@ -36,7 +37,7 @@ grails.plugin.springsecurity.filterChain.chainMap = [
 	[pattern: '/**',             filters: 'JOINED_FILTERS']
 ]
 
-grails.plugin.fields.disableLookupCache = true
+grails.plugin.fields.disableLookupCache = false
 
 grails.config.locations = ["classpath:prod-config.groovy",]
 
@@ -49,6 +50,16 @@ environments {
 				bundle = false
 				storagePath = "/assets"
 			}
+		}
+	}
+}
+
+grails {
+	plugin {
+		databasemigration {
+			updateOnStart = true
+			changelogFileName = 'changelog.groovy'
+			updateOnStartFileName = ["changelog.groovy"]
 		}
 	}
 }

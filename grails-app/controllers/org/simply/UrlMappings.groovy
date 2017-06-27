@@ -18,6 +18,8 @@ class UrlMappings {
 
 
     static mappings = {
+        "/login/$action?/$id?"(controller: "login")
+        "/logout"(controller: "logout", action: "index")
 
         "/admin"(redirect: "/admin/pages")
         "/admin/block/$action"(controller: "block", namespace:"admin")
@@ -39,12 +41,9 @@ class UrlMappings {
             }
         }
 
-        "/$controller/$action?/$id?(.$format)?"{
-            constraints {
-                // apply constraints here
-            }
-        }
 
+        "500"(view:'/error')
+        "404"(view:'/notFound')
     }
 
     static boolean isCmsPage(String path) {

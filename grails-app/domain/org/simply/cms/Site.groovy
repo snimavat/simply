@@ -12,11 +12,16 @@ class Site {
 	Boolean isDefault = false
 
 	static transients = ['url']
+
 	static constraints = {
 		name nullable: false, blank: false
 		hostname nullable: false, blank: false
 		rootPage nullable: false
 		isDefault nullable: false
+	}
+
+	static mapping = {
+		cache true
 	}
 
 	public String getUrl() {

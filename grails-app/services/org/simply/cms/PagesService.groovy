@@ -12,8 +12,8 @@ import groovy.transform.TypeCheckingMode
 import org.apache.commons.lang.StringUtils
 import org.apache.commons.lang.Validate
 import org.grails.web.gsp.io.GrailsConventionGroovyPageLocator
+import org.hibernate.Hibernate
 import org.simply.cms.pages.Page
-import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.jdbc.core.JdbcTemplate
 
 import static org.grails.io.support.GrailsResourceUtils.appendPiecesForUri
@@ -24,16 +24,10 @@ class PagesService {
 	private static final String PAGES_DIR = "/pages"
 	private static final String SITE_VIEWS_DIR = "/sites"
 
-	@Autowired
 	GrailsConventionGroovyPageLocator groovyPageLocator
-
-	@Autowired
 	LinkGenerator grailsLinkGenerator
-
-	@Autowired
 	JdbcTemplate jdbcTemplate
 
-	@Autowired
 	GrailsApplication grailsApplication
 
 	private static Slugify slg = new Slugify()
@@ -108,7 +102,8 @@ class PagesService {
 	}
 
 	String findViewForPage(String viewName, Page page, Site site = null) {
-		String subDir = StringUtils.uncapitalize(page.class.simpleName)
+		Class pageClass = Hibernate.getClass(page)
+		String subDir = StringUtils.uncapitalize(pageClass.simpleName)
 		List<String> templateResolveOrder = []
 		if(site)templateResolveOrder << appendPiecesForUri(SITE_VIEWS_DIR, site.hostname, "pages", subDir, viewName)
 		templateResolveOrder << appendPiecesForUri(PAGES_DIR, subDir, viewName)

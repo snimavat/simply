@@ -3,9 +3,8 @@
 <head>
 	<meta name="layout" content="admin">
 	<title>Edit page</title>
-	<asset:stylesheet src="boostrap-addons.css"/>
+
 	<asset:stylesheet src="lapsi.css"/>
-	<asset:javascript src="simply/admin/simply.js"/>
 </head>
 
 <body>
@@ -46,5 +45,6 @@
 	<div>
 	</div>
 	</div>
+	<asset:javascript src="simply/admin/simply.js"/>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/tinymce/4.6.4/tinymce.min.js"></script>
 </body>
