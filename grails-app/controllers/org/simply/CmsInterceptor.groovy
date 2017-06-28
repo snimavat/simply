@@ -14,7 +14,7 @@ class CmsInterceptor {
 
 	boolean before() {
 		String host = request.serverName
-		log.trace "Request received $host, $request.requestURI, $request.forwardURI"
+		log.debug "Request received host: $host, uri: $request.requestURI, forward-uri: $request.forwardURI"
 
 		if(host) { host = host.trim().toLowerCase()}
 		Site site = Site.findByHostname(host) ?: Site.DEFAUTL

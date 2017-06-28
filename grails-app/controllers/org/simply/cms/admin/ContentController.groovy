@@ -20,6 +20,7 @@ class ContentController {
 			List components = request.forwardURI.split("/").findAll( { !StringUtils.isEmpty(it)}) as List
 			Page page = site.rootPage.route(components)
 			if(!page) {
+				log.warn("Page not found $request.forwardURI")
 				render status: 404
 			} else {
 				String view = pagesService.findDisplayViewForPage(page, site)
