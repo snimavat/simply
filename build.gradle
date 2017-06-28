@@ -81,9 +81,11 @@ bootRun {
 
 
 assets {
-    minifyJs = false
-    minifyCss = false
+    minifyJs = true
+    minifyCss = true
     enableGzip = false
+
+    //excludes = ["boostrap/fonts/*", 'font-awsome/fonts/*']
 }
 
 sourceSets {
