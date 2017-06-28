@@ -77,6 +77,7 @@ class PagesService {
 	}
 
 	@CompileDynamic
+	@Transactional(readOnly = true)
 	String generateLink(Page page, Site site) {
 		Page siteRoot = site.rootPage
 		Validate.notNull(siteRoot, "No root page for site $site.name")
@@ -101,6 +102,7 @@ class PagesService {
 
 	}
 
+	@NotTransactional
 	String findViewForPage(String viewName, Page page, Site site = null) {
 		Class pageClass = Hibernate.getClass(page)
 		String subDir = StringUtils.uncapitalize(pageClass.simpleName)

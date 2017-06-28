@@ -38,5 +38,10 @@ enum BlogCategory {
 		this.id = id
 	}
 
+	static BlogCategory findByName(String name) {
+		return values().find({it.name == name})
+	}
+
+
 
 }

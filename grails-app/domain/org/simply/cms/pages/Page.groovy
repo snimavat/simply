@@ -77,6 +77,7 @@ class Page implements LookupType {
 		return context
 	}
 
+
 	String getName() { return title }
 
 	String updateUrlPath() {
@@ -85,15 +86,17 @@ class Page implements LookupType {
 		return urlPath
 	}
 
-	Page route(List<String> pathComponents) {
+	RouteResult route(HttpServletRequest request, Map params, List<String> pathComponents) {
 		if(pathComponents && pathComponents.size() > 0) {
 			String childSlug = pathComponents[0]
 			List<String> remainingComponents = pathComponents.drop(1)
 			Page subpage = childs.findBySlug(childSlug.trim())
 			if(!subpage) return null
-			else return subpage.route(remainingComponents)
+			else return subpage.route(request, params, remainingComponents)
 		} else {
-			if(this.published) return this
+			if(this.published) {
+				return new RouteResult(this, templateName, getContext(request, params))
+			}
 			else return null
 		}
 	}

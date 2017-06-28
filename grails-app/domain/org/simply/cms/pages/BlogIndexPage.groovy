@@ -2,13 +2,14 @@ package org.simply.cms.pages
 
 import grails.compiler.GrailsCompileStatic
 import grails.gorm.PagedResultList
+import groovy.transform.CompileDynamic
 import groovy.transform.CompileStatic
 import groovy.transform.TypeCheckingMode
 
 import javax.servlet.http.HttpServletRequest
 
 @GrailsCompileStatic
-class BlogIndexPage extends Page {
+class BlogIndexPage extends Page implements RoutablePageTrait {
 
 	String intro
 
@@ -20,10 +21,10 @@ class BlogIndexPage extends Page {
 		intro nullable: true, blank: false, widget: "textarea"
 	}
 
-	@Override
-	@CompileStatic(TypeCheckingMode.SKIP)
-	Map getContext(HttpServletRequest request, Map params) {
-		Map context = super.getContext(request, params)
+	@Route("/")
+	@CompileDynamic
+	RouteResult index(Map params) {
+		Map context = super.getContext(null, params)
 		int max = params.int("max") ?: 10
 		int offset = params.int("offset") ?: 0
 
@@ -34,7 +35,25 @@ class BlogIndexPage extends Page {
 		context['childs'] = pages
 		context['totalCount'] = pages.totalCount
 
-		return context
+		return new RouteResult(this, templateName, context)
+	}
+
+	@Route("/category/{categoryName}")
+	@CompileDynamic
+	RouteResult category(Map params) {
+		Map context = super.getContext(null, params)
+		int max = params.int("max") ?: 10
+		int offset = params.int("offset") ?: 0
+
+		PagedResultList<BlogPage> pages = childs.list(max: max, offset: offset) {
+			eq "published", true
+			eq 'category', BlogCategory.findByName(params.categoryName)
+		}
+
+		context['childs'] = pages
+		context['totalCount'] = pages.totalCount
+
+		return new RouteResult(this, templateName, context)
 	}
 
 }

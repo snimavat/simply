@@ -63,3 +63,9 @@ grails {
 		}
 	}
 }
+
+environments {
+	test {
+		grails.plugin.databasemigration.updateOnStart = false
+	}
+}

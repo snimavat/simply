@@ -1,12 +1,10 @@
 package org.simply.cms.admin
 
-import groovy.transform.CompileDynamic
-import groovy.transform.CompileStatic
 import org.apache.commons.lang.StringUtils
 import org.simply.cms.PagesService
 import org.simply.cms.Site
 import org.simply.cms.SiteContextHolder
-import org.simply.cms.pages.Page
+import org.simply.cms.pages.RouteResult
 
 class ContentController {
 	PagesService pagesService
@@ -18,17 +16,18 @@ class ContentController {
 		if(site) {
 			params
 			List components = request.forwardURI.split("/").findAll( { !StringUtils.isEmpty(it)}) as List
-			Page page = site.rootPage.route(components)
-			if(!page) {
+			RouteResult routeResult = site.rootPage.route(request, params, components)
+
+			if(!routeResult) {
 				log.warn("Page not found $request.forwardURI")
 				render status: 404
 			} else {
-				String view = pagesService.findDisplayViewForPage(page, site)
+				String view = pagesService.findViewForPage(routeResult.view, routeResult.page, site)
 				if(view) {
-					log.trace("Using view $view for page ${page.class.simpleName} and site $site.hostname")
-					render view: view, model: page.getContext(request, params)
+					log.trace("Using view $view for page ${routeResult.page.class.simpleName} and site $site.hostname")
+					render view: view, model: routeResult.model
 				} else {
-					log.error("No view found for page class ${page.class.simpleName}, site ${site.name}")
+					log.error("No view found for page class ${routeResult.page.class.simpleName}, site ${site.name}")
 					render status: 404, text: "not found"
 				}
 			}
