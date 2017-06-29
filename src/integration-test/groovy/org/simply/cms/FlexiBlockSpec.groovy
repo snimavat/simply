@@ -1,10 +1,10 @@
 package org.simply.cms
 
-import org.simply.cms.block.FlexiBlock
-import org.simply.cms.pages.FlexiPage
-import org.simply.cms.pages.Page
 import grails.test.mixin.integration.Integration
 import grails.transaction.Rollback
+import org.simply.cms.block.FlexiBlock
+import org.simply.cms.pages.BlogPage
+import org.simply.cms.pages.Page
 import spock.lang.Specification
 
 /**
@@ -17,7 +17,7 @@ class FlexiBlockSpec extends Specification {
 
 	def "test save"() {
 		given:
-		FlexiPage page = new FlexiPage(slug: "test", parent: Page.ROOT, title: "test")
+		BlogPage page = new BlogPage(slug: "test", parent: Page.ROOT, title: "test")
 		FlexiBlock block = new FlexiBlock()
 		block.blocks = []
 		block.blocks << new Person(name: "person")
@@ -32,7 +32,7 @@ class FlexiBlockSpec extends Specification {
 		noExceptionThrown()
 
 		when:
-		FlexiPage reloaded = FlexiPage.get(page.id)
+		BlogPage reloaded = BlogPage.get(page.id)
 
 		then:
 		reloaded != null
