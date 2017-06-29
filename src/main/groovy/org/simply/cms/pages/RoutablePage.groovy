@@ -15,6 +15,7 @@ trait RoutablePageTrait {
 
 	@CompileStatic(TypeCheckingMode.SKIP)
 	RouteResult route(HttpServletRequest request, Map params, List<String> pathComponents) {
+		if(!this.published) return null
 		AntPathMatcher matcher = new AntPathMatcher()
 
 		String path = "/" + pathComponents.join("/")
