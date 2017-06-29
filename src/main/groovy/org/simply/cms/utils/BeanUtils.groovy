@@ -9,6 +9,6 @@ import java.lang.reflect.Method
 class BeanUtils {
 
 	static List<Method> findAllMethodsWithAnnotation(Class clazz, Class<? extends Annotation> annotation) {
-		return clazz.methods.findAll({ Method m -> m.isAnnotationPresent(annotation)})
+		return clazz.methods.findAll({ Method m -> m.isAnnotationPresent(annotation)}) as List
 	}
 }

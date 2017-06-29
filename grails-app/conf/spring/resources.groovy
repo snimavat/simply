@@ -1,4 +1,5 @@
 import org.simply.cms.SiteContextHolder
+import org.simply.cms.gorm.ShortidGeneratorEventListener
 import org.springframework.aop.scope.ScopedProxyFactoryBean
 
 // Place your Spring DSL code here
@@ -15,4 +16,5 @@ beans = {
 		bean.scope = "request"
 	}
 
+	shortidGeneratorEventListener(ShortidGeneratorEventListener, ref('hibernateDatastore'))
 }

@@ -9,6 +9,8 @@ import javax.servlet.http.HttpServletRequest
 class Page implements LookupType {
 	static scaffold = [include:['slug', 'title', 'published'], exclude:['urlPath']]
 
+	String shortid
+
 	Page parent
 
 	String treePath = "01"
@@ -30,22 +32,30 @@ class Page implements LookupType {
 
 	static constraints = {
 		parent nullable: true
-		slug nullable: false, blank: false, index: "idx_slug"
+		slug nullable: false, blank: false
 		title nullable: false, blank: false
 		urlPath nullable: true, blank: true
 		keywords nullable: true
 		metaDescription nullable: true, widget:"textarea"
 
 		treePath nullable: true, blank: true
+
 		childCount nullable: true
 		level nullable: true
 		dateCreated nullable: true
 		lastUpdated nullable: true
+
+		shortid nullable: true, unique: true
 	}
 
 	static mapping = {
 		tablePerHierarchy false
+
 		metaDescription type: "text"
+		slug index: "idx_page_slug"
+		treePath index: "idx_page_treepath"
+		shortid index:'idx_page_shortid'
+		parent index: "idx_page_parent"
 	}
 
 	static namedQueries = {

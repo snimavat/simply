@@ -1,4 +1,6 @@
 
+grails.config.locations = ["classpath:prod-config.groovy",]
+
 // Added by the Spring Security Core plugin:
 grails.plugin.springsecurity.userLookup.userDomainClassName = 'org.simply.User'
 grails.plugin.springsecurity.userLookup.authorityJoinClassName = 'org.simply.UserRole'
@@ -38,21 +40,7 @@ grails.plugin.springsecurity.filterChain.chainMap = [
 ]
 
 grails.plugin.fields.disableLookupCache = false
-
-grails.config.locations = ["classpath:prod-config.groovy",]
-
-environments {
-	production {
-		grails.plugin.fields.disableLookupCache = false
-
-		grails {
-			assets {
-				bundle = false
-				storagePath = "/assets"
-			}
-		}
-	}
-}
+grails.plugins.disqus.shortname = "test-me-1"
 
 grails {
 	plugin {
@@ -65,7 +53,20 @@ grails {
 }
 
 environments {
+	production {
+		grails.plugin.fields.disableLookupCache = false
+		grails.plugins.disqus.shortname = "nimavat-me"
+
+		grails {
+			assets {
+				bundle = false
+				storagePath = "/assets"
+			}
+		}
+	}
+
 	test {
 		grails.plugin.databasemigration.updateOnStart = false
 	}
 }
+

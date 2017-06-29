@@ -20,6 +20,8 @@
 			<cms:renderBlock block="${block}"/>
 		</g:each>
 	</g:if>
+
+	<disqus:comments id="test" identifier="${page.shortid}"/>
 </div>
 </body>
 </html>
