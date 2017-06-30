@@ -1,8 +1,5 @@
 package org.simply.cms
 
-import org.simply.cms.block.Block
-import org.simply.cms.block.FlexiBlock
-import org.simply.cms.pages.Page
 import grails.compiler.GrailsCompileStatic
 import grails.core.GrailsApplication
 import grails.databinding.SimpleMapDataBindingSource
@@ -10,6 +7,8 @@ import grails.transaction.Transactional
 import grails.web.databinding.GrailsWebDataBinder
 import groovy.transform.CompileDynamic
 import org.apache.commons.lang.StringUtils
+import org.simply.cms.pages.Block
+import org.simply.cms.pages.Page
 import org.springframework.beans.factory.annotation.Autowired
 
 import javax.annotation.PostConstruct
@@ -56,12 +55,12 @@ class BlockService {
 
 	@Transactional
 	void saveBlock(Block block, Page page, String fieldName, int blockIndex) {
-		FlexiBlock field = (FlexiBlock) page[fieldName]
+		List field =  (List)page[fieldName]
 		if (field == null) {
-			field = new FlexiBlock()
+			field = new ArrayList()
 			page[fieldName] = field
 		}
-		field.put(blockIndex, block)
+		field.add(blockIndex, block)
 		page.save()
 	}
 

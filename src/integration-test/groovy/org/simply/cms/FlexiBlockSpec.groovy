@@ -2,7 +2,7 @@ package org.simply.cms
 
 import grails.test.mixin.integration.Integration
 import grails.transaction.Rollback
-import org.simply.cms.block.FlexiBlock
+import org.simply.cms.pages.FlexiBlock
 import org.simply.cms.pages.BlogPage
 import org.simply.cms.pages.Page
 import spock.lang.Specification

@@ -1,8 +1,8 @@
 <%@ page defaultCodec="none" %>
 
 <div id="flexi-field-${property}" data-field="${property}" class="flexi-field">
-	<g:if test="${value && value.blocks}">
-		<g:each in="${value.blocks}" var="block" status="blockIndex">
+	<g:if test="${value}">
+		<g:each in="${value}" var="block" status="blockIndex">
 			<div class="block block-${block.class.simpleName} block-wrapper" data-index="${blockIndex}" data-type="${block.class.simpleName}">
 				<div class="pull-right">
 					<a href="javascript:" class="block-action"><i class="fa fa-pencil-square-o"></i> </a>

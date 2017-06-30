@@ -72,10 +72,11 @@ dependencies {
     compile 'org.grails.plugins:database-migration:3.0.3'
     compile 'org.liquibase:liquibase-core:3.5.3'
 
-    compile "org.grails.plugins:disqus:1.0.SNAPSHOT"
+    compile "org.grails.plugins:disqus:1.0"
     compile "me.nimavat:shortid:1.0.1.RC1"
 
     testCompile "org.grails:grails-plugin-testing"
+    compile 'org.grails.plugins:mongodb:6.0.12'
 }
 
 bootRun {

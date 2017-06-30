@@ -44,7 +44,7 @@ class PagesService {
 			page.updateUrlPath()
 		}
 		else {
-			if(page.isDirty("slug") || page.isDirty("parent")) {
+			if(page.hasChanged("slug") || page.hasChanged("parent")) {
 				String oldPath = page.getPersistentValue("urlPath")
 				page.updateUrlPath()
 				String newPath = page.urlPath

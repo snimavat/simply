@@ -16,7 +16,7 @@
 		</sec:ifAllGranted>
 	</h2>
 	<g:if test="${page.body != null}">
-		<g:each in="${page.body.blocks}" var="block">
+		<g:each in="${page.body}" var="block">
 			<cms:renderBlock block="${block}"/>
 		</g:each>
 	</g:if>

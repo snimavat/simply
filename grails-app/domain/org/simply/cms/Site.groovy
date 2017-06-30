@@ -12,6 +12,7 @@ class Site {
 	Boolean isDefault = false
 
 	static transients = ['url']
+	static mapWith = "mongo"
 
 	static constraints = {
 		name nullable: false, blank: false

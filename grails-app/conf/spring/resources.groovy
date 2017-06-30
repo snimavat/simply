@@ -17,4 +17,5 @@ beans = {
 	}
 
 	shortidGeneratorEventListener(ShortidGeneratorEventListener, ref('hibernateDatastore'))
+	shortidGeneratorEventListener(ShortidGeneratorEventListener, ref('mongoDatastore'))
 }

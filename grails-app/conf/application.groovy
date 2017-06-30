@@ -41,6 +41,7 @@ grails.plugin.springsecurity.filterChain.chainMap = [
 
 grails.plugin.fields.disableLookupCache = false
 grails.plugins.disqus.shortname = "test-me-1"
+grails.plugins.disqus.powered = false
 
 grails {
 	plugin {
@@ -70,3 +71,8 @@ environments {
 	}
 }
 
+grails {
+	mongodb {
+		databaseName = "simply"
+	}
+}

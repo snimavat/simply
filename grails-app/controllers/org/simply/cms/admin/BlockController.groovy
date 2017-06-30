@@ -1,9 +1,7 @@
 package org.simply.cms.admin
 
 import org.simply.cms.BlockService
-import org.simply.cms.block.Block
-import org.simply.cms.block.FlexiBlock
-import org.simply.cms.block.RichTextBlock
+import org.simply.cms.pages.Block
 import org.simply.cms.pages.Page
 
 class BlockController {
@@ -23,9 +21,9 @@ class BlockController {
 
 	def edit(Long pageId, int index, String type) {
 		Page page = Page.get(pageId)
-		FlexiBlock body = page['body']
+		List body = page['body']
 		Block block = body.get(index)
-		String template = blockService.getBlockTemplate(RichTextBlock, "form")
+		String template = blockService.getBlockTemplate(block.class, "form")
 		render template: template, model: [block:block]
 	}
 
@@ -43,7 +41,7 @@ class BlockController {
 	}
 
 	def delete(Page page, Integer index) {
-		FlexiBlock body = page['body']
+		List body = page['body']
 		if(body.remove(index)) {
 			page.save(flush:true)
 			render status: 200

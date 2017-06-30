@@ -47,7 +47,7 @@ class BlogIndexPage extends Page implements RoutablePageTrait {
 
 		PagedResultList<BlogPage> pages = childs.list(max: max, offset: offset) {
 			eq "published", true
-			eq 'category', BlogCategory.findByName(params.categoryName)
+			eq 'category', BlogCategory.findByName(params.categoryName).id
 		}
 
 		context['childs'] = pages

@@ -48,8 +48,8 @@ class Page implements LookupType {
 		shortid nullable: true, unique: true
 	}
 
+	static mapWith = "mongo"
 	static mapping = {
-		tablePerHierarchy false
 
 		metaDescription type: "text"
 		slug index: "idx_page_slug"
@@ -124,4 +124,18 @@ class Page implements LookupType {
 		return Page.findByTreePath("01")
 	}
 
+	boolean equals(o) {
+		if (this.is(o)) return true
+		if (!o instanceof Page) return false
+
+		Page page = (Page) o
+
+		if (shortid != page.shortid) return false
+
+		return true
+	}
+
+	int hashCode() {
+		return (shortid != null ? shortid.hashCode() : 0)
+	}
 }

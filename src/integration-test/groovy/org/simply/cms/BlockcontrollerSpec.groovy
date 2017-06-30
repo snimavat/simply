@@ -3,9 +3,8 @@ package org.simply.cms
 import grails.test.mixin.integration.Integration
 import grails.transaction.Rollback
 import org.simply.cms.admin.BlockController
-import org.simply.cms.block.RichTextBlock
+import org.simply.cms.pages.RichTextBlock
 import org.simply.cms.pages.BlogPage
-import org.simply.cms.pages.FlexiPage
 import org.simply.cms.pages.Page
 import test.common.BaseControllerIntegrationSpec
 
