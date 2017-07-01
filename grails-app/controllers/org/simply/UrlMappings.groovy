@@ -22,7 +22,7 @@ class UrlMappings {
         "/logout"(controller: "logout", action: "index")
 
         "/admin"(redirect: "/admin/pages")
-        "/admin/block/$action"(controller: "block", namespace:"admin")
+        "/admin/block/$type/$action"(controller: "block", namespace:"admin")
 
         "/admin/pages/$id?/$action?(.$format)?" {
             controller = "page"
