@@ -53,11 +53,17 @@ grails {
 	}
 }
 
+grails {
+	mongodb {
+		databaseName = "simply"
+	}
+}
+
 environments {
 	production {
 		grails.plugin.fields.disableLookupCache = false
 		grails.plugins.disqus.shortname = "nimavat-me"
-
+		grails.mongodb.host = "mongo"
 		grails {
 			assets {
 				bundle = false
@@ -71,8 +77,3 @@ environments {
 	}
 }
 
-grails {
-	mongodb {
-		databaseName = "simply"
-	}
-}

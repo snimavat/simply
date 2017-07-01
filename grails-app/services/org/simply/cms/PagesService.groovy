@@ -65,6 +65,7 @@ class PagesService {
 		return StringUtils.leftPad(String.valueOf(count + 1), 2, '0')
 	}*/
 
+	//TODO implement using mongo query
 	void updateChildUrls(String old, String newPath, Page page) {
 		String query = """
 			update page 
@@ -73,7 +74,7 @@ class PagesService {
 			where tree_path like ?
 			and id <> ?
 		"""
-		jdbcTemplate.update(query, newPath, old.length() + 1, page.treePath + '%', page.id)
+		//jdbcTemplate.update(query, newPath, old.length() + 1, page.treePath + '%', page.id)
 	}
 
 	@CompileDynamic
