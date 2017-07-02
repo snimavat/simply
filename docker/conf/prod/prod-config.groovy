@@ -1,8 +1,7 @@
 
-
-println "Crunchprep external config executed"
 environments {
 	production {
+		println "Simply: external config executed"
 		dataSource {
 			 username = "root"
 			 password = "root"
