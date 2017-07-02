@@ -14,7 +14,7 @@ services:
       - "./conf/mysql:/etc/mysql/conf.d"
 
   mongo:
-      image: mongo:3.0
+      image: mongo:3.4.5
       container_name: simply_mongo
       volumes:
         - "../../data/mongo:/data/db"
