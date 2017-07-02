@@ -4,11 +4,14 @@ import org.apache.commons.lang.StringUtils
 import org.simply.cms.PagesService
 import org.simply.cms.Site
 import org.simply.cms.SiteContextHolder
+import org.simply.cms.logging.PerfLogger
 import org.simply.cms.pages.RouteResult
+import org.springframework.util.StopWatch
 
 class ContentController {
 	PagesService pagesService
 	SiteContextHolder siteContextHolder
+	PerfLogger perfLogger
 
 	def serve() {
 		Site site = siteContextHolder.site
@@ -16,7 +19,12 @@ class ContentController {
 		if(site) {
 			params
 			List components = request.forwardURI.split("/").findAll( { !StringUtils.isEmpty(it)}) as List
+
+			StopWatch stopWatch = new StopWatch()
+			stopWatch.start()
 			RouteResult routeResult = site.rootPage.route(request, params, components)
+			stopWatch.stop()
+			perfLogger.info("Took $stopWatch.totalTimeSeconds seconds to resolve route $request.forwardURI")
 
 			if(!routeResult) {
 				log.warn("Page not found $request.forwardURI")
