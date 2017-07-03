@@ -11,11 +11,7 @@
     <meta name="keywords" content="Grails freelancer">
     <meta name="author" content="snimavat">
 
-    <!-- FAVICON  -->
-    <!-- Place your favicon.ico in the images directory -->
-    <link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon">
-    <link rel="icon" href="images/favicon.ico" type="image/x-icon">
-    
+
     <!-- =========================
        STYLESHEETS 
     ============================== -->

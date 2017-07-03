@@ -85,7 +85,7 @@ if(!isDevelopmentMode) {
         append = true
 
         encoder(PatternLayoutEncoder) {
-            pattern = "%date [%level] %-30logger{30} - %msg%n%exception{10}"
+            pattern = "%date [%level] %logger - %msg%n%exception{10}"
         }
 
     }

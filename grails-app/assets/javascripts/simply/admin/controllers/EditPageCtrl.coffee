@@ -41,7 +41,7 @@ class EditPageCtrl
       promise = blockFormServ(pageId, index, type, "edit")
       promise.then (blockContent) ->
         updated = $(blockTpl({type: type, index: index})).append(blockContent)
-        block.html(updated)
+        block.replaceWith(updated)
 
 
     deleteBlock = (e) ->

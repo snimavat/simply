@@ -60,7 +60,7 @@ class BlockService {
 			field = new ArrayList()
 			page[fieldName] = field
 		}
-		field.add(blockIndex, block)
+		field[blockIndex] = block
 		page.save()
 	}
 

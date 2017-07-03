@@ -3,6 +3,7 @@ package org.simply.cms.admin
 import org.simply.cms.BlockService
 import org.simply.cms.pages.Block
 import org.simply.cms.pages.Page
+import org.springframework.http.HttpStatus
 
 class BlockController {
 	static namespace = "admin"
@@ -44,7 +45,7 @@ class BlockController {
 		List body = page['body']
 		if(body.remove(index)) {
 			page.save(flush:true)
-			render status: 200
+			render status: HttpStatus.NO_CONTENT.value()
 		}
 		else render status: 404, text: "Block Not found"
 	}
