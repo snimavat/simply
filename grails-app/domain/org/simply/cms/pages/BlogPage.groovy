@@ -1,6 +1,6 @@
 package org.simply.cms.pages
 
-class BlogPage extends Page {
+class BlogPage extends Page implements Book {
 
 	BlogCategory category
 	String intro

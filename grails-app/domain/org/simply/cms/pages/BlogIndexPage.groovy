@@ -28,7 +28,7 @@ class BlogIndexPage extends Page implements RoutablePageTrait {
 		int max = params.int("max") ?: 10
 		int offset = params.int("offset") ?: 0
 
-		PagedResultList<BlogPage> pages = childs.list(max: max, offset: offset) {
+		PagedResultList<BlogPage> pages = getChilds(-1).list(max: max, offset: offset) {
 			eq "published", true
 		}
 
@@ -45,7 +45,7 @@ class BlogIndexPage extends Page implements RoutablePageTrait {
 		int max = params.int("max") ?: 10
 		int offset = params.int("offset") ?: 0
 
-		PagedResultList<BlogPage> pages = childs.list(max: max, offset: offset) {
+		PagedResultList<BlogPage> pages = getChilds(-1).list(max: max, offset: offset) {
 			eq "published", true
 			eq 'category', BlogCategory.findByName(params.categoryName).id
 		}

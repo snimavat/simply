@@ -112,9 +112,11 @@ class Page implements LookupType {
 	}
 
 
-	DetachedCriteria<Page> getChilds() {
+	DetachedCriteria<Page> getChilds(int level = 1) {
 		def criteria = new DetachedCriteria(Page).build {
-			eq 'parent', this
+			like("treePath", this.treePath + "%")
+			ne("id", this.id)
+			if(level >= 1) eq("level", this.level + level)
 		}
 
 		return criteria
