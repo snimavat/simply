@@ -10,7 +10,8 @@
 		<div class="subhead">
 			<div class="subhead-heading">Pages</div>
 			<div class="subhead-actions">
-				<g:link action="addSubpage" class="btn btn-primary btn-xs" id="${params.id}">Create child page</g:link>
+				<g:link action="edit" class="btn btn-primary btn-xs" id="${page.id}">Edit page</g:link>
+				<g:link action="addSubpage" class="btn btn-primary btn-xs" id="${params.id}">Add page</g:link>
 			</div>
 		</div>
 
