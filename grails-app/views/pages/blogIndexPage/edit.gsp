@@ -11,6 +11,7 @@
 <body>
 	<div class="row" controller="EditPageCtrl" page-id="${instance.id}">
 		<div class="col-md-12">
+			<cms:breadcrumb page="${instance}"/>
 			<div class="panel panel-default">
 				<div class="panel-heading">
 					<admin:link action="create" class="btn btn-primary btn-xs">Back</admin:link>

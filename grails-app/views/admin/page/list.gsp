@@ -14,6 +14,7 @@
 			</div>
 		</div>
 
+		<cms:breadcrumb page="${page}"/>
 		<g:render template="list"/>
 
 </body>

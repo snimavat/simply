@@ -90,8 +90,9 @@ class PageController {
 		if(id == null) redirect(action: "list", params: [id:Page.ROOT.id])
 		else {
 			Page page = Page.get(id)
+			//if(page.parent) //page = page.parent
 			PagedResultList<Page> list = page.childs.list(max: 10, offset: 0)
-			Map resp = [list: list, total: list.totalCount]
+			Map resp = [list: list, total: list.totalCount, page:page]
 			respond resp
 		}
 	}
