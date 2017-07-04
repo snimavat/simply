@@ -3,6 +3,8 @@
 <head>
 	<meta name="layout" content="blog">
 	<title>${page.title}</title>
+	<meta name="keywords" content="${page.keywords}"/>
+	<meta name="description" content="${page.metaDescription}"/>
 </head>
 
 <body>

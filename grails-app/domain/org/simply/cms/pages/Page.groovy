@@ -93,6 +93,7 @@ class Page implements LookupType {
 	String updateUrlPath() {
 		if(parent) urlPath = parent.urlPath + this.slug + "/"
 		else urlPath = "/" //Root page.
+		markDirty('urlPath') //Hack for issue https://github.com/grails/gorm-mongodb/issues/49
 		return urlPath
 	}
 

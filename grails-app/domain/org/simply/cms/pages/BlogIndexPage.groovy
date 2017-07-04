@@ -30,6 +30,7 @@ class BlogIndexPage extends Page implements RoutablePageTrait {
 
 		PagedResultList<BlogPage> pages = getChilds(-1).list(max: max, offset: offset) {
 			eq "published", true
+			order("dateCreated", "desc")
 		}
 
 		context['childs'] = pages
