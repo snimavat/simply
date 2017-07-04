@@ -5,7 +5,6 @@
 	<f:with bean="instance">
 		<f:field property="slug"/>
 		<f:field property="title"/>
-		<f:field property="intro"/>
 		<f:field property="keywords"/>
 		<f:field property="metaDescription"/>
 		<f:field property="published"/>
@@ -18,7 +17,7 @@
 			<g:else>Save</g:else>
 		</button>
 
-		<g:link action="list" class="btn btn-warning" params="[id:instance.parent.id]">
+		<g:link action="list" class="btn btn-warning" id="${instance.parent.id}">
 			<i class="icon-arrow-left icon-white"></i> Cancel
 		</g:link>
 	</div>

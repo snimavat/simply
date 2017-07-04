@@ -19,9 +19,9 @@
 			<g:else>Save</g:else>
 		</button>
 
-		<admin:link action="list" class="btn btn-warning">
+		<g:link action="list" class="btn btn-warning" params="[id:instance.parent.id]">
 			<i class="icon-arrow-left icon-white"></i> Cancel
-		</admin:link>
+		</g:link>
 	</div>
 </g:form>
 
