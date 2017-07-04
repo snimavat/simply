@@ -1,6 +1,5 @@
 <style>
 textarea {
-	resize: none;
 	min-height: 150px;
 }
 
@@ -28,13 +27,13 @@ textarea {
 
         tinymce.init({
             selector: '#value',
-            toolbar: 'undo redo | styleselect | bold italic | link image | codesample code',
+            toolbar: 'undo redo | styleselect | bold italic | numlist bullist | link image | codesample code',
             menubar: false,
             plugins: 'advlist autolink link image lists preview codesample code',
 
 
             branding: false,
-            resize: false,
+            resize: true,
 
 
             codesample_languages: [
