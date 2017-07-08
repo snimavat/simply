@@ -40,7 +40,7 @@ if (isDevelopmentMode && targetDir != null) {
 
 
 String appenderName = isDevelopmentMode ? 'STDOUT' : 'file'
-String logsDir = System.properties.getProperty('catalina.base', '.') + "/logs"
+String logsDir = System.getProperty('catalina.base', '.') + "/logs"
 String logFileName = logsDir + "/simply.log"
 String errorLogFileName = logsDir + "/simply-errors.log"
 String perfLogFileName = logsDir + "/simply-perf.log"
