@@ -9,6 +9,7 @@
 		<f:field property="intro"/>
 		<f:field property="keywords"/>
 		<f:field property="metaDescription"/>
+		<f:field property="commentsEnabled"/>
 		<f:field property="published"/>
 	</f:with>
 

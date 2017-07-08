@@ -23,7 +23,9 @@
 		</g:each>
 	</g:if>
 
-	<disqus:comments id="test" identifier="${page.shortid}"/>
+	<g:if test="${page.commentsEnabled}">
+		<disqus:comments id="test" identifier="${page.shortid}"/>
+	</g:if>
 </div>
 </body>
 </html>

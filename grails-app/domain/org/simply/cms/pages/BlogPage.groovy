@@ -5,6 +5,7 @@ class BlogPage extends Page implements Book {
 	BlogCategory category
 	String intro
 	List<Block> body
+	Boolean commentsEnabled
 
 	static embedded = ['body']
 
@@ -18,6 +19,7 @@ class BlogPage extends Page implements Book {
 		intro nullable: false, blank: false, widget: "textarea"
 		category nullable: true
 		body widget:"flexiField"
+		commentsEnabled nullable: true
 	}
 
 }
