@@ -17,6 +17,9 @@
 			</g:link>
 		</sec:ifAllGranted>
 	</h2>
+	<div class="blog-post-meta">
+		<span class="date">Published: <g:formatDate date="${page.dateCreated}" format="MMM dd yyyy"/></span>
+	</div>
 	<g:if test="${page.body != null}">
 		<g:each in="${page.body}" var="block">
 			<cms:renderBlock block="${block}"/>
