@@ -91,7 +91,9 @@ class PageController {
 		else {
 			Page page = Page.get(id)
 			//if(page.parent) //page = page.parent
-			PagedResultList<Page> list = page.childs.list(max: 10, offset: 0)
+			PagedResultList<Page> list = page.childs.list(max: 10, offset: 0) {
+				order("dateCreated", "desc")
+			}
 			Map resp = [list: list, total: list.totalCount, page:page]
 			respond resp
 		}

@@ -43,6 +43,8 @@ grails.plugin.fields.disableLookupCache = false
 grails.plugins.disqus.shortname = "test-me-1"
 grails.plugins.disqus.powered = false
 
+simply.cms.cache.varnish.host = "http://localhost"
+
 grails {
 	plugin {
 		databasemigration {
@@ -64,6 +66,7 @@ environments {
 		grails.plugin.fields.disableLookupCache = false
 		grails.plugins.disqus.shortname = "nimavat-me"
 		grails.mongodb.host = "mongo"
+		simply.cms.cache.varnish.host = "http://varnish"
 		grails {
 			assets {
 				bundle = false

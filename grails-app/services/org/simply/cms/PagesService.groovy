@@ -13,6 +13,7 @@ import org.apache.commons.lang.StringUtils
 import org.apache.commons.lang.Validate
 import org.grails.web.gsp.io.GrailsConventionGroovyPageLocator
 import org.hibernate.Hibernate
+import org.simply.cms.cache.VarnishCacheInvalidator
 import org.simply.cms.pages.Page
 import org.springframework.jdbc.core.JdbcTemplate
 
@@ -26,9 +27,9 @@ class PagesService {
 
 	GrailsConventionGroovyPageLocator groovyPageLocator
 	LinkGenerator grailsLinkGenerator
-	JdbcTemplate jdbcTemplate
 
 	GrailsApplication grailsApplication
+	VarnishCacheInvalidator varnishCacheInvalidator
 
 	private static Slugify slg = new Slugify()
 
@@ -44,6 +45,7 @@ class PagesService {
 			page.updateUrlPath()
 		}
 		else {
+			invalidateCache(page)
 			if(page.hasChanged("slug") || page.hasChanged("parent")) {
 				String oldPath = page.getPersistentValue("urlPath")
 				page.updateUrlPath()
@@ -57,6 +59,21 @@ class PagesService {
 
 		page.save()
 		return page
+	}
+
+	/**
+	 * TODO fix to handle multisites
+	 *
+	 * @param page
+	 */
+	@CompileDynamic
+	@NotTransactional
+	void invalidateCache(Page page) {
+		Long site
+		String pageUri
+		String siteUrl
+		(site, pageUri, siteUrl) = getUrlParts(page)
+		varnishCacheInvalidator.ban([mapping: "page-serve", params:[uri:pageUri]])
 	}
 
 	/*

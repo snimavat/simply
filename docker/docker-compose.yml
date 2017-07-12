@@ -36,14 +36,25 @@ services:
     #ports:
      #- "8080:8080"
 
-  nginx:
-     image: nginx:alpine
-     container_name: simply_nginx
-     ports:
-      - "80:80"
-     volumes:
-       - ./conf/nginx/logs:/var/log/nginx
-       - ./conf/nginx:/etc/nginx/conf.d
-       - ./static:/assets
-     depends_on:
-       - web
+
+  varnish:
+       image: snimavat/varnish:4.1.3
+       container_name: simply_varnish
+       ports:
+        - "80:80"
+       volumes:
+         - ./conf/varnish/nimavat-me.vcl:/etc/varnish/default.vcl
+       depends_on:
+         - web
+
+  #nginx:
+  #   image: nginx:alpine
+  #   container_name: simply_nginx
+  #   ports:
+  #    - "80:80"
+  #   volumes:
+  #     - ./conf/nginx/logs:/var/log/nginx
+  #     - ./conf/nginx:/etc/nginx/conf.d
+  #     - ./static:/assets
+  #   depends_on:
+  #     - web

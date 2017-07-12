@@ -1,5 +1,6 @@
 package org.simply.cms
 
+import grails.compiler.GrailsCompileStatic
 import org.simply.cms.pages.Page
 
 class SimplyTagLib {
@@ -15,7 +16,7 @@ class SimplyTagLib {
     SiteContextHolder siteContextHolder
 
 
-    Closure renderBlock = {attrs ->
+    Closure renderBlock = {Map attrs ->
         def block = attrs.block
         String template = blockService.getBlockTemplate(block.class, DISPLAY_TEMPLATE)
         out << render(template: template, model:[block:block])
