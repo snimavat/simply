@@ -8,6 +8,10 @@ backend default {
 sub vcl_backend_response {
   set beresp.http.url = bereq.url;
   set beresp.ttl = 30d;
+
+   if (beresp.http.content-type ~ "text") {
+       set beresp.do_gzip = true;
+   }
 }
 
 sub vcl_deliver {
@@ -31,10 +35,3 @@ sub vcl_recv {
         unset req.http.Cookie;
      }
  }
-
-
-sub vcl_fetch {
-      if (beresp.http.content-type ~ "text") {
-              set beresp.do_gzip = true;
-      }
-}
