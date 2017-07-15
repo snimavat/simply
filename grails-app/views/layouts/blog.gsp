@@ -9,7 +9,6 @@
 	<asset:link rel="shortcut icon" href="lapsi/favicon.ico" type="image/x-icon"/>
 	<asset:stylesheet src="bootstrap/css/bootstrap.css"/>
 	<asset:stylesheet src="font-awsome/css/font-awesome.min.css"/>
-	<asset:stylesheet src="prism/prism.css"/>
 
 	<link href="https://fonts.googleapis.com/css?family=Open+Sans:400,700|Source+Sans+Pro:400,700" rel="stylesheet">
 
@@ -71,6 +70,7 @@
 	</div>
 </div>
 
-<asset:javascript src="prism/prism.js"/>
+<asset:stylesheet src="prism/prism.css"/>
+<asset:javascript src="prism/prism.js" async="true"/>
 </body>
 </html>

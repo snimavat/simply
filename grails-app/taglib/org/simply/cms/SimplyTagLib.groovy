@@ -1,6 +1,5 @@
 package org.simply.cms
 
-import grails.compiler.GrailsCompileStatic
 import org.simply.cms.pages.Page
 
 class SimplyTagLib {
@@ -45,4 +44,5 @@ class SimplyTagLib {
         model.page = attrs.page
         out << render(template: "/common/templates/breadcrumb", model:model)
     }
+
 }
