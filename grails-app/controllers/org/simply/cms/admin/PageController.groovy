@@ -1,5 +1,6 @@
 package org.simply.cms.admin
 
+import grails.plugins.crudify.core.Pager
 import org.simply.cms.PagesService
 import org.simply.cms.pages.Page
 import grails.core.GrailsApplication
@@ -90,12 +91,16 @@ class PageController {
 		if(id == null) redirect(action: "list", params: [id:Page.ROOT.id])
 		else {
 			Page page = Page.get(id)
-			//if(page.parent) //page = page.parent
-			PagedResultList<Page> list = page.childs.list(max: 10, offset: 0) {
+			Pager pager = new Pager(params)
+			PagedResultList<Page> list = page.childs.list(max: pager.max, offset: pager.offset) {
 				order("dateCreated", "desc")
 			}
 			Map resp = [list: list, total: list.totalCount, page:page]
-			respond resp
+			if(request.xhr) {
+				render(template: "pageList", model: resp)
+				return
+			}
+			else respond resp
 		}
 	}
 

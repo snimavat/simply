@@ -17,8 +17,9 @@ class SimplyTagLib {
 
     Closure renderBlock = {Map attrs ->
         def block = attrs.block
+        Page page = attrs.page
         String template = blockService.getBlockTemplate(block.class, DISPLAY_TEMPLATE)
-        out << render(template: template, model:[block:block])
+        out << render(template: template, model:[block:block, page:page])
     }
 
     Closure pageLink = {attrs, body ->

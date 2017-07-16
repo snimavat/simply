@@ -22,7 +22,7 @@
 	</div>
 	<g:if test="${page.body != null}">
 		<g:each in="${page.body}" var="block">
-			<cms:renderBlock block="${block}"/>
+			<cms:renderBlock block="${block}" page="${page}"/>
 		</g:each>
 	</g:if>
 

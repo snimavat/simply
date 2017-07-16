@@ -8,7 +8,7 @@
 					<a href="javascript:" class="block-action"><i class="fa fa-pencil-square-o"></i> </a>
 					<a href="javascript:" class="block-action block-delete"><i class="fa fa-trash-o"></i> </a>
 				</div>
-				<hb:render template="${block.value}" context="${block}"/>
+				<hb:render template="${block.value}" context="[page:bean, block:block]"/>
 			</div>
 		</g:each>
 	</g:if>

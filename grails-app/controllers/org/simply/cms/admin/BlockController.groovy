@@ -25,7 +25,7 @@ class BlockController {
 		List body = page['body']
 		Block block = body.get(index)
 		String template = blockService.getBlockTemplate(block.class, "form")
-		render template: template, model: [block:block]
+		render template: template, model: [block:block, page:page]
 	}
 
 
@@ -34,7 +34,7 @@ class BlockController {
 			Block block = blockService.createBlock(type, params.block)
 			blockService.saveBlock(block, page, "body", index)
 			String template = blockService.getBlockTemplate(block.class, "display")
-			render template: template, model: [block:block]
+			render template: template, model: [block:block, page:page]
 		} else {
 			render status: 404
 		}
