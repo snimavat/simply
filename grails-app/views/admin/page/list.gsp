@@ -21,7 +21,7 @@
 	<g:render template="pageList"/>
 </div>
 
-<div id="paginate" controller="paginate" data-url="${request.forwardURI}" data-update="#page-list" data-total="${100}"></div>
+<div id="paginate" controller="paginate" data-url="${request.forwardURI}" data-update="#page-list" data-total="${total}"></div>
 
 </body>
 </html>
