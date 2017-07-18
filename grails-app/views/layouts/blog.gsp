@@ -72,5 +72,10 @@
 
 <asset:stylesheet src="prism/prism.css"/>
 <asset:javascript src="prism/prism.js" async="true"/>
+
+<g:if env="production">
+	<g:render template="/common/templates/mixpanel"/>
+</g:if>
+
 </body>
 </html>
