@@ -83,7 +83,7 @@
 		<div class="row">
 			<div class="col-sm-12">
 				<div class="text-center">
-					<p class="text-muted">Blog developed with <a href="https://github.com/snimavat/simply">simply</a> Grails</p>
+					<p class="text-muted">Blog developed with <a href="https://github.com/snimavat/simply">simply</a> Grails CMS</p>
 					<p class="text-muted">Looking for a Grails developer ! <a href="/">Check with me.</a></p>
 				</div>
 			</div>
