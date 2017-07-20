@@ -40,9 +40,11 @@ if (isDevelopmentMode && targetDir != null) {
 
 
 String appenderName = isDevelopmentMode ? 'STDOUT' : 'file'
-String logsDir = System.properties.getProperty('catalina.base', '.') + "/logs"
+String logsDir = System.getProperty('catalina.base', '.') + "/logs"
 String logFileName = logsDir + "/simply.log"
 String errorLogFileName = logsDir + "/simply-errors.log"
+String perfLogFileName = logsDir + "/simply-perf.log"
+String perfAppender = isDevelopmentMode ? "STDOUT" : "perf"
 
 println "logFile name: ${logFileName}"
 
@@ -77,8 +79,20 @@ if(!isDevelopmentMode) {
             maxHistory = 15
         }
     }
+
+    appender("perf", FileAppender) {
+        file = perfLogFileName
+        append = true
+
+        encoder(PatternLayoutEncoder) {
+            pattern = "%date [%level] %logger - %msg%n%exception{10}"
+        }
+
+    }
 }
 
+
+logger("perfLogger", DEBUG, [perfAppender], true)
 logger("grails.app", DEBUG, [appenderName])
 logger("org.simply", DEBUG, [appenderName])
 logger("org.grails.plugins.databasemigration", INFO, [appenderName])

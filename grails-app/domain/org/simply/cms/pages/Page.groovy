@@ -48,8 +48,8 @@ class Page implements LookupType {
 		shortid nullable: true, unique: true
 	}
 
+	static mapWith = "mongo"
 	static mapping = {
-		tablePerHierarchy false
 
 		metaDescription type: "text"
 		slug index: "idx_page_slug"
@@ -93,6 +93,7 @@ class Page implements LookupType {
 	String updateUrlPath() {
 		if(parent) urlPath = parent.urlPath + this.slug + "/"
 		else urlPath = "/" //Root page.
+		markDirty('urlPath') //Hack for issue https://github.com/grails/gorm-mongodb/issues/49
 		return urlPath
 	}
 
@@ -112,9 +113,11 @@ class Page implements LookupType {
 	}
 
 
-	DetachedCriteria<Page> getChilds() {
+	DetachedCriteria<Page> getChilds(int level = 1) {
 		def criteria = new DetachedCriteria(Page).build {
-			eq 'parent', this
+			like("treePath", this.treePath + "%")
+			ne("id", this.id)
+			if(level >= 1) eq("level", this.level + level)
 		}
 
 		return criteria
@@ -124,4 +127,18 @@ class Page implements LookupType {
 		return Page.findByTreePath("01")
 	}
 
+	boolean equals(o) {
+		if (this.is(o)) return true
+		if (!o instanceof Page) return false
+
+		Page page = (Page) o
+
+		if (shortid != page.shortid) return false
+
+		return true
+	}
+
+	int hashCode() {
+		return (shortid != null ? shortid.hashCode() : 0)
+	}
 }

@@ -10,6 +10,7 @@
 <body>
 	<div class="row" controller="EditPageCtrl" page-id="${instance.id}">
 		<div class="col-md-12">
+			<cms:breadcrumb page="${instance}"/>
 			<div class="panel panel-default">
 				<div class="panel-heading">
 					<admin:link action="create" class="btn btn-primary btn-xs">Back</admin:link>
@@ -47,4 +48,6 @@
 	</div>
 	<asset:javascript src="simply/admin/simply.js"/>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/tinymce/4.6.4/tinymce.min.js"></script>
+	<asset:stylesheet src="prism/prism.css"/>
+	<asset:javascript src="prism/prism.js"/>
 </body>

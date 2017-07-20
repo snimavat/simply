@@ -3,10 +3,10 @@ app.service "blockFormServ", ["$log", "pathWithContext"], ($log, pathWithContext
   submit = (dialog, params) ->
     form = dialog.find("form")
     $.publish('block.form.beforeSave', bootbox);
-    $.post(pathWithContext("admin/block/save", params), form.serialize())
+    $.post(pathWithContext("admin/block/#{params.type}/save", params), form.serialize())
 
 
-  (pageId, blockIndex, blockName, action = 'create') ->
+  (pageId, blockIndex, blockType, action = 'create') ->
     deferred = $.Deferred()
     dialog = bootbox.dialog {
       title: 'Select'
@@ -24,7 +24,7 @@ app.service "blockFormServ", ["$log", "pathWithContext"], ($log, pathWithContext
           className: 'btn-success',
           callback: () ->
             data = undefined
-            promise = submit(dialog, {"page.id":pageId, index:blockIndex, blockType:blockName})
+            promise = submit(dialog, {"page.id":pageId, index:blockIndex, type:blockType})
             promise.done (data, textStatus, jqXHR) ->
               deferred.resolve(data) if data?
               dialog.modal("hide")
@@ -33,13 +33,13 @@ app.service "blockFormServ", ["$log", "pathWithContext"], ($log, pathWithContext
     }
 
     dialog.on "hidden.bs.modal", () ->
-      $.publish('block.form.hide', bootbox);
-      dialog.remove()
+      $.publish('block.form.hidden', bootbox);
 
     dialog.init ()->
-      promise = $.get(pathWithContext("admin/block/#{action}", {pageId:pageId, index:blockIndex, blockType:blockName}))
+      promise = $.get(pathWithContext("admin/block/#{blockType}/#{action}", {pageId:pageId, index:blockIndex}))
       promise.done (data) ->
         dialog.find('.bootbox-body').html(data)
+        $.publish('block.form.shown', bootbox);
 
 
     deferred.promise()

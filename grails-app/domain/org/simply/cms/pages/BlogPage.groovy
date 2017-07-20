@@ -1,23 +1,25 @@
 package org.simply.cms.pages
 
-import org.simply.cms.block.FlexiBlock
-import org.hibernate.JsonUserType
-
-class BlogPage extends Page {
+class BlogPage extends Page implements Book {
 
 	BlogCategory category
 	String intro
-	FlexiBlock body
+	List<Block> body
+	Boolean commentsEnabled
+
+	static embedded = ['body']
 
 	static mapping = {
-		body type: JsonUserType, params: [clazz: FlexiBlock.name]
+		//body type: JsonUserType, params: [clazz: FlexiBlock.name]
 		intro type: "text"
 	}
 
 	static constraints = {
 		body nullable: true
-		intro nullable: true, blank: false, widget: "textarea"
+		intro nullable: false, blank: false, widget: "textarea"
 		category nullable: true
+		body widget:"flexiField"
+		commentsEnabled nullable: true
 	}
 
 }

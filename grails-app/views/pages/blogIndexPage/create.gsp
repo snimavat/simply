@@ -8,6 +8,7 @@
 <body>
 	<div class="row">
 		<div class="col-md-12">
+			<cms:breadcrumb page="${instance}"/>
 			<div class="panel panel-default">
 				<div class="panel-heading">
 					Create Page

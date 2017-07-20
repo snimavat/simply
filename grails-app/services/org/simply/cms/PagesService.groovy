@@ -13,6 +13,7 @@ import org.apache.commons.lang.StringUtils
 import org.apache.commons.lang.Validate
 import org.grails.web.gsp.io.GrailsConventionGroovyPageLocator
 import org.hibernate.Hibernate
+import org.simply.cms.cache.VarnishCacheInvalidator
 import org.simply.cms.pages.Page
 import org.springframework.jdbc.core.JdbcTemplate
 
@@ -26,9 +27,9 @@ class PagesService {
 
 	GrailsConventionGroovyPageLocator groovyPageLocator
 	LinkGenerator grailsLinkGenerator
-	JdbcTemplate jdbcTemplate
 
 	GrailsApplication grailsApplication
+	VarnishCacheInvalidator varnishCacheInvalidator
 
 	private static Slugify slg = new Slugify()
 
@@ -44,7 +45,8 @@ class PagesService {
 			page.updateUrlPath()
 		}
 		else {
-			if(page.isDirty("slug") || page.isDirty("parent")) {
+			invalidateCache(page)
+			if(page.hasChanged("slug") || page.hasChanged("parent")) {
 				String oldPath = page.getPersistentValue("urlPath")
 				page.updateUrlPath()
 				String newPath = page.urlPath
@@ -59,12 +61,28 @@ class PagesService {
 		return page
 	}
 
+	/**
+	 * TODO fix to handle multisites
+	 *
+	 * @param page
+	 */
+	@CompileDynamic
+	@NotTransactional
+	void invalidateCache(Page page) {
+		Long site
+		String pageUri
+		String siteUrl
+		(site, pageUri, siteUrl) = getUrlParts(page)
+		varnishCacheInvalidator.ban([mapping: "page-serve", params:[uri:pageUri]])
+	}
+
 	/*
 	private String getNextRootTreePath() {
 		int count = Page.countByLevel(0)
 		return StringUtils.leftPad(String.valueOf(count + 1), 2, '0')
 	}*/
 
+	//TODO implement using mongo query
 	void updateChildUrls(String old, String newPath, Page page) {
 		String query = """
 			update page 
@@ -73,7 +91,7 @@ class PagesService {
 			where tree_path like ?
 			and id <> ?
 		"""
-		jdbcTemplate.update(query, newPath, old.length() + 1, page.treePath + '%', page.id)
+		//jdbcTemplate.update(query, newPath, old.length() + 1, page.treePath + '%', page.id)
 	}
 
 	@CompileDynamic

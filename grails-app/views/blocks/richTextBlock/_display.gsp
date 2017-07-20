@@ -1,2 +1,4 @@
 <%@ page defaultCodec="none" %>
-<p>${block.value}</p>
+<p>
+	<hb:render template="${block.value}" context="[page:page, block:block]"/>
+</p>

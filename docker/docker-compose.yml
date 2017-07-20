@@ -4,14 +4,20 @@ services:
   db:
     image: mysql:5.7.10
     container_name: simply_mysql
-    ports:
-      - "3306:3306"
+    #ports:
+      #- "3306:3306"
     environment:
       - MYSQL_ROOT_PASSWORD=root
       - MYSQL_DATABASE=simply
     volumes:
-      - "../../db:/var/lib/mysql"
+      - "../../data/mysql:/var/lib/mysql"
       - "./conf/mysql:/etc/mysql/conf.d"
+
+  mongo:
+      image: mongo:3.4.5
+      container_name: simply_mongo
+      volumes:
+        - "../../data/mongo:/data/db"
 
   web:
     image: tomcat:8.5-alpine
@@ -26,17 +32,29 @@ services:
       - ./static:/assets
     depends_on:
      - db
-    ports:
-     - "8080:8080"
+     - mongo
+    #ports:
+     #- "8080:8080"
 
-  nginx:
-     image: nginx:alpine
-     container_name: nginx
-     ports:
-      - "80:80"
-     volumes:
-       - ./conf/nginx/logs:/var/log/nginx
-       - ./conf/nginx:/etc/nginx/conf.d
-       - ./static:/assets
-     depends_on:
-       - web
+
+  varnish:
+       image: snimavat/varnish:4.1.3
+       container_name: simply_varnish
+       ports:
+        - "80:80"
+       volumes:
+         - ./conf/varnish/nimavat-me.vcl:/etc/varnish/default.vcl
+       depends_on:
+         - web
+
+  #nginx:
+  #   image: nginx:alpine
+  #   container_name: simply_nginx
+  #   ports:
+  #    - "80:80"
+  #   volumes:
+  #     - ./conf/nginx/logs:/var/log/nginx
+  #     - ./conf/nginx:/etc/nginx/conf.d
+  #     - ./static:/assets
+  #   depends_on:
+  #     - web

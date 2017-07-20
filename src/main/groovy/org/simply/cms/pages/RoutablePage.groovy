@@ -48,7 +48,3 @@ trait RoutablePageTrait {
 	}
 }
 
-class RoutablePage extends Page implements RoutablePageTrait {
-
-}
-

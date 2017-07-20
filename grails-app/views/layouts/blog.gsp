@@ -50,6 +50,7 @@
 				<ul class="">
 					<li><a href="/" title="nimavat.me">Home</a></li>
 					<li><a href="/blog" title="Blog">Blog</a></li>
+					<li><a href="/code-snippets" title="code snippets">Snippets</a></li>
 				</ul>
 			</div>
 		</div>
@@ -70,6 +71,25 @@
 	</div>
 </div>
 
+<asset:stylesheet src="prism/prism.css"/>
+<asset:javascript src="prism/prism.js" async="true"/>
+
+<g:if env="production">
+	<g:render template="/common/templates/mixpanel"/>
+</g:if>
+
+<footer class="footer">
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-12">
+				<div class="text-center">
+					<p class="text-muted">Blog developed with <a href="https://github.com/snimavat/simply">simply</a> Grails CMS</p>
+					<p class="text-muted">Looking for a Grails developer ! <a href="/">Check with me.</a></p>
+				</div>
+			</div>
+		</div>
+	</div>
+</footer>
 
 </body>
 </html>

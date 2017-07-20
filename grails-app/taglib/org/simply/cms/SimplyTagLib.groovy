@@ -8,17 +8,18 @@ class SimplyTagLib {
     final static String DISPLAY_TEMPLATE = "display"
 
     static defaultEncodeAs = [taglib:'html']
-    static encodeAsForTags = [renderBlock: 'none', pageLink:"none"]
+    static encodeAsForTags = [renderBlock: 'none', pageLink:"none", 'breadcrumb':'none']
 
     BlockService blockService
     PagesService pagesService
     SiteContextHolder siteContextHolder
 
 
-    Closure renderBlock = {attrs ->
+    Closure renderBlock = {Map attrs ->
         def block = attrs.block
+        Page page = attrs.page
         String template = blockService.getBlockTemplate(block.class, DISPLAY_TEMPLATE)
-        out << render(template: template, model:[block:block])
+        out << render(template: template, model:[block:block, page:page])
     }
 
     Closure pageLink = {attrs, body ->
@@ -28,4 +29,21 @@ class SimplyTagLib {
             out << g.link(controller:"content", params:[uri:pageUri], mapping: "page-serve", body)
         }
     }
+
+    Closure breadcrumb = { attrs ->
+        Map model = [controller:attrs.controller ?: 'page', action:attrs.action ?: 'list']
+        Page page = attrs.page
+        List<Page> pages = []
+        while (page != Page.ROOT) {
+            Page parent = page.parent
+            pages << page
+            page = parent
+        }
+
+        pages << Page.ROOT
+        model.pages = pages.reverse()
+        model.page = attrs.page
+        out << render(template: "/common/templates/breadcrumb", model:model)
+    }
+
 }

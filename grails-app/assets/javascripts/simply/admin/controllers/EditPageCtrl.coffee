@@ -41,7 +41,7 @@ class EditPageCtrl
       promise = blockFormServ(pageId, index, type, "edit")
       promise.then (blockContent) ->
         updated = $(blockTpl({type: type, index: index})).append(blockContent)
-        block.html(updated)
+        block.replaceWith(updated)
 
 
     deleteBlock = (e) ->
@@ -49,8 +49,10 @@ class EditPageCtrl
       promise = $confirm("Are you sure you want to delete the block?")
       block = $(this).parents(".block")
       blockIndex = block.data("index")
+      type = block.data("type")
+
       promise.then (result) ->
-        p = $.post($path("admin/block/delete", {index: blockIndex, "page.id":pageId}))
+        p = $.post($path("admin/block/#{type}/delete", {index: blockIndex, "page.id":pageId}))
         p.done () -> block.remove()
 
     $el.find(".flexi-field").on("click", ".block-wrapper", editBlock)

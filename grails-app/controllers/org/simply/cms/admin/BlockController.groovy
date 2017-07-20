@@ -1,10 +1,9 @@
 package org.simply.cms.admin
 
 import org.simply.cms.BlockService
-import org.simply.cms.block.Block
-import org.simply.cms.block.FlexiBlock
-import org.simply.cms.block.RichTextBlock
+import org.simply.cms.pages.Block
 import org.simply.cms.pages.Page
+import org.springframework.http.HttpStatus
 
 class BlockController {
 	static namespace = "admin"
@@ -15,38 +14,38 @@ class BlockController {
 		List<Class> blocks = grailsApplication.config.simply.cms.blocks
 	}
 
-	def create(Long page, int index, String blockType) {
-		Block block = blockService.createBlock(blockType)
+	def create(Long page, int index, String type) {
+		Block block = blockService.createBlock(type)
 		String template = blockService.getBlockTemplate(block.class, "form")
 		render template: template, model: [block:block]
 	}
 
 	def edit(Long pageId, int index, String type) {
 		Page page = Page.get(pageId)
-		FlexiBlock body = page['body']
+		List body = page['body']
 		Block block = body.get(index)
-		String template = blockService.getBlockTemplate(RichTextBlock, "form")
-		render template: template, model: [block:block]
+		String template = blockService.getBlockTemplate(block.class, "form")
+		render template: template, model: [block:block, page:page]
 	}
 
 
-	def save(Page page, int index, String blockType) {
+	def save(Page page, int index, String type) {
 		if(page) {
-			Block block = blockService.createBlock(blockType, params.block)
+			Block block = blockService.createBlock(type, params.block)
 			blockService.saveBlock(block, page, "body", index)
 			String template = blockService.getBlockTemplate(block.class, "display")
-			render template: template, model: [block:block]
+			render template: template, model: [block:block, page:page]
 		} else {
 			render status: 404
 		}
 
 	}
 
-	def delete(Page page, Integer index) {
-		FlexiBlock body = page['body']
+	def delete(Page page, Integer index, String type) {
+		List body = page['body']
 		if(body.remove(index)) {
 			page.save(flush:true)
-			render status: 200
+			render status: HttpStatus.NO_CONTENT.value()
 		}
 		else render status: 404, text: "Block Not found"
 	}

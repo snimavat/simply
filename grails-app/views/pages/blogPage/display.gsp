@@ -3,6 +3,8 @@
 <head>
 	<meta name="layout" content="blog">
 	<title>${page.title}</title>
+	<meta name="keywords" content="${page.keywords}"/>
+	<meta name="description" content="${page.metaDescription}"/>
 </head>
 
 <body>
@@ -15,13 +17,18 @@
 			</g:link>
 		</sec:ifAllGranted>
 	</h2>
+	<div class="blog-post-meta">
+		<span class="date">Published: <g:formatDate date="${page.dateCreated}" format="MMM dd yyyy"/></span>
+	</div>
 	<g:if test="${page.body != null}">
-		<g:each in="${page.body.blocks}" var="block">
-			<cms:renderBlock block="${block}"/>
+		<g:each in="${page.body}" var="block">
+			<cms:renderBlock block="${block}" page="${page}"/>
 		</g:each>
 	</g:if>
 
-	<disqus:comments id="test" identifier="${page.shortid}"/>
+	<g:if test="${page.commentsEnabled}">
+		<disqus:comments id="test" identifier="${page.shortid}"/>
+	</g:if>
 </div>
 </body>
 </html>
