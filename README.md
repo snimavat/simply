@@ -1,2 +1,2 @@
 # simply
-A simple grails cms - demo http://nimavat.me
+A simple and flexible grails cms for developers - demo http://nimavat.me
