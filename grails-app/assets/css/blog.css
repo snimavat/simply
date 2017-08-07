@@ -82,12 +82,14 @@ h6, .h6 {
   padding-top: 20px;
   padding-bottom: 20px;
 }
+
 .blog-title {
   margin-top: 30px;
   margin-bottom: 0;
   font-size: 50px;
   font-weight: 700;
 }
+
 .blog-description {
   font-size: 20px;
   color: #999;
@@ -200,23 +202,23 @@ h1 {
   text-transform: uppercase;
 }
 h2 {
-  font-size: 1.50em;
+  font-size: 1.3em;
   font-weight: 700;
   margin-bottom: 0.4em;
   font-family: 'Open Sans';
 }
 h3 {
-  font-size: 1.35em;
+  font-size: 1.1em;
   font-weight: 700;
   margin-bottom: 0.4em;
 }
 h4 {
-  font-size: 1.25em;
+  font-size: 1.1em;
   font-weight: 700;
   margin-bottom: 0.67em;
 }
 h5 {
-  font-size: 1.10em;
+  font-size: 1.1em;
   font-weight: 700;
   margin-bottom: 0.94em;
 }
@@ -230,6 +232,11 @@ p {
   margin-top: 0.5em;
   margin-bottom: 1.5em;
 }
+
+pre {
+  margin-bottom: 1.5em;
+}
+
 strong {
   font-weight: 700;
 }
@@ -240,12 +247,10 @@ a {
   color: #790cf4;
 }
 
-
 li {
   margin-top: 0.5em;
   margin-bottom: 0.5em;
 }
-
 
 .blog-post-title a {
   color: #555555;
