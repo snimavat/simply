@@ -12,6 +12,7 @@
 
 	<link href="https://fonts.googleapis.com/css?family=Open+Sans:400,700|Source+Sans+Pro:400,700" rel="stylesheet">
 
+	<asset:stylesheet src="prism/prism.css"/>
 	<asset:stylesheet src="blog.css"/>
 
 	<g:layoutHead/>
@@ -71,7 +72,6 @@
 	</div>
 </div>
 
-<asset:stylesheet src="prism/prism.css"/>
 <asset:javascript src="prism/prism.js" async="true"/>
 
 <g:if env="production">

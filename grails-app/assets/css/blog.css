@@ -167,6 +167,9 @@ h6, .h6 {
   margin-bottom: 0;
 }
 
+/*
+ ------------ Custom styles --------------
+ */
 
 body {
   font-family: 'Source Sans Pro', sans-serif;
@@ -190,6 +193,7 @@ h5,
 h6 {
   font-weight: 700;
   line-height: 1.2;
+  margin-top: 1em;
   font-family: 'Open Sans';
   color: #555555;
 }
@@ -234,6 +238,7 @@ p {
 }
 
 pre {
+  margin-top: 0.5em;
   margin-bottom: 1.5em;
 }
 
