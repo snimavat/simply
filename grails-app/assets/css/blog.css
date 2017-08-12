@@ -181,7 +181,7 @@ body {
 
 .main-content {
   background: #fefefe;
-  min-height: calc(100vh - 60px);
+  min-height: calc(100vh - 80px);
   border-radius: 10px;
 }
 
@@ -194,6 +194,7 @@ h6 {
   font-weight: 700;
   line-height: 1.2;
   margin-top: 1em;
+  margin-bottom: 1em;
   font-family: 'Open Sans';
   color: #555555;
 }
@@ -201,44 +202,38 @@ h6 {
 h1 {
   font-size: 1.75em;
   font-weight: 700;
-  margin-top: 0.53em;
-  margin-bottom: 0.53em;
   text-transform: uppercase;
 }
 h2 {
   font-size: 1.3em;
   font-weight: 700;
-  margin-bottom: 0.4em;
   font-family: 'Open Sans';
 }
 h3 {
   font-size: 1.1em;
   font-weight: 700;
-  margin-bottom: 0.4em;
 }
+
 h4 {
   font-size: 1.1em;
   font-weight: 700;
-  margin-bottom: 0.67em;
 }
 h5 {
   font-size: 1.1em;
   font-weight: 700;
-  margin-bottom: 0.94em;
 }
 h6 {
   font-size: 1em;
   font-weight: 700;
-  margin-bottom: 1em;
 }
 
 p {
-  margin-top: 0.5em;
+  margin-top: 1.5em;
   margin-bottom: 1.5em;
 }
 
-pre {
-  margin-top: 0.5em;
+pre, pre[class*="language-"] {
+  margin-top: 1.5em;
   margin-bottom: 1.5em;
 }
 
