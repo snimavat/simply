@@ -1,5 +1,4 @@
-
-grails.config.locations = ["classpath:prod-config.groovy",]
+grails.config.locations = ["classpath:nimavat-me-config.groovy"]
 
 // Added by the Spring Security Core plugin:
 grails.plugin.springsecurity.userLookup.userDomainClassName = 'org.simply.User'
@@ -45,6 +44,7 @@ grails.plugins.disqus.powered = false
 
 simply.cms.cache.varnish.host = "http://localhost"
 
+grails.serverURL = "http://localhost:8080"
 grails {
 	plugin {
 		databasemigration {
@@ -63,6 +63,7 @@ grails {
 
 environments {
 	production {
+		grails.serverURL = "http://nimavat.me"
 		grails.plugin.fields.disableLookupCache = false
 		grails.plugins.disqus.shortname = "nimavat-me"
 		grails.mongodb.host = "mongo"
